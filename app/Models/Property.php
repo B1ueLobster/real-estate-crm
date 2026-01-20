@@ -13,7 +13,7 @@ class Property extends Model
 
     //Кастинг для автоматичного перетворення тіпів
     protected $casts =[
-      'price'=> 'decimal:15,2',
+//      'price'=> 'decimal:15,2',
         'area'=> 'float'
         // для json  так само
     ];
