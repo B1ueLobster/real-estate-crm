@@ -51,7 +51,6 @@ class PropertyResource extends Resource
                                                 TextInput::make('street_address')->required()->label('Вулиця'),
                                                 TextInput::make('street_number')->required()->label('Номер будинку'),
                                             ]),
-
                                         RichEditor::make('description')
                                             ->label('Опис')
                                             ->columnSpanFull(),

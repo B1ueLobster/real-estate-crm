@@ -2,26 +2,41 @@
 
 namespace Database\Seeders;
 
+use App\Models\Amenity; //
+use App\Models\Property;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $amenities = [
+            'Wi-Fi',
+            'Гараж',
+            'Басейн',
+            'Кондиціонер',
+            'Опалення',
+            'Тераса',
+            'Ліфт',
+            'Охорона',
+            'Паркінг',
+            'Меблі'
+        ];
 
-        User::firstOrCreate(
-            ['email' => 'test@example.com'],
-            [
-                'name' => 'Test User',
-                'password' => 'password',
-                'email_verified_at' => now(),
-            ]
-        );
+        foreach ($amenities as $name) {
+            Amenity::firstOrCreate(['name' => $name]);
+        }
+
+        $user = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'), // Пароль: password
+        ]);
+
+
+        Property::factory(10)
+            ->for($user)
+            ->create();
     }
 }

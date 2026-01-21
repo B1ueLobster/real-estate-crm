@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('amenities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('icon')->nullable();
             // 'appliance' (техніка), 'feature' (особливість), 'location' (локація)
