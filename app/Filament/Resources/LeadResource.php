@@ -110,9 +110,7 @@ class LeadResource extends Resource
                 TextColumn::make('first_name')
                     ->label('Клієнт')
                     // Combine first and last name into one column for display
-                    ->formatStateUsing(function ($record) {
-                        return $record->full_name;
-                    })
+                    ->formatStateUsing(fn (string $state, \App\Models\Lead $record) => $record->full_name ?? $state)
                     ->searchable(['first_name', 'last_name'])
                     ->sortable(),
 

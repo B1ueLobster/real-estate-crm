@@ -31,11 +31,15 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('password'), // Пароль: password
+            'password' => bcrypt('password'),
         ]);
 
 
         Property::factory(10)
+            ->for($user)
+            ->create();
+
+        \App\Models\Lead::factory(10)
             ->for($user)
             ->create();
     }
